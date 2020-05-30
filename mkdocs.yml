@@ -46,7 +46,7 @@ pages:
   - Harbor:
     - Using Harbor: using_lagoon/harbor/using_harbor.md
     - Security Scanning: using_lagoon/harbor/security_scanning.md
-    - Harbor Settings: 
+    - Harbor Settings:
       - Overview: using_lagoon/harbor/harbor_settings.md
       - harborclair: using_lagoon/harbor/harbor-container-settings/harborclair.md
       - harborclairadapter: using_lagoon/harbor/harbor-container-settings/harborclairadapter.md
@@ -77,7 +77,7 @@ pages:
   - Developing Lagoon: developing_lagoon/index.md
   - Tests: developing_lagoon/tests.md
   - Contributing: developing_lagoon/contributing.md
-  - API Debugging: developing_lagoon/api-debugging.md
+  - Node.js Debugging: developing_lagoon/node-debugging.md
   - Code Of Conduct: developing_lagoon/code_of_conduct.md
 theme: readthedocs
 

@@ -24,7 +24,7 @@ data:
         cert_path /fluentd/tls/server.crt
         private_key_path /fluentd/tls/server.key
         client_cert_auth true
-      <transport>
+      </transport>
     </source>
     # send to elasticsearch
     <match **>

@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: amazeeio/logs-concentrator
+  repository: amazeeiolagoon/logs-concentrator
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart version.
   tag: logs-concentrator

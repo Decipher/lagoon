@@ -69,3 +69,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Elasticsearch output config. Defaults to 9300, http.
+#elasticsearchHostPort: "443"
+#elasticsearchScheme: https
+
+# The values below must be supplied during installation as they have no sane
+# defaults. Certificate should be provided in PEM format.
+#elasticsearchHost: ""
+#elasticsearchAdminPassword: ""
+#tls:
+#  caCert: ""
+#  serverCertChain: ""
+#  serverKey: ""

@@ -1,6 +1,6 @@
 apiVersion: v2
 name: lagoon-logs-concentrator
-description: A Helm chart for Kubernetes
+description: A Helm chart for Kubernetes which installs the Lagoon logs-concentrator service.
 
 # A chart can be either an 'application' or a 'library' chart.
 #

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "logs-concentrator.fullname" . }}
+  name: {{ include "lagoon-logs-concentrator.fullname" . }}
   labels:
-    {{- include "logs-concentrator.labels" . | nindent 4 }}
+    {{- include "lagoon-logs-concentrator.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "logs-concentrator.selectorLabels" . | nindent 6 }}
+      {{- include "lagoon-logs-concentrator.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "logs-concentrator.selectorLabels" . | nindent 8 }}
+        {{- include "lagoon-logs-concentrator.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "logs-concentrator.serviceAccountName" . }}
+      serviceAccountName: {{ include "lagoon-logs-concentrator.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

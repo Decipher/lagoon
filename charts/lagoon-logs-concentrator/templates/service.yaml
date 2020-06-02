@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: forward
       protocol: TCP
-      name: http
+      name: forward
   selector:
     {{- include "lagoon-logs-concentrator.selectorLabels" . | nindent 4 }}

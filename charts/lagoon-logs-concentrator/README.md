@@ -15,7 +15,7 @@ Important notes:
 
 ### Generate a server certificate
 
-This will be the certificate used by the `logs-collector`.
+This will be the certificate used by the `logs-concentrator`.
 
 Generate a `server.csr` and `server-key.pem`:
 ```
@@ -23,7 +23,7 @@ cat <<EOF | cfssl genkey - | cfssljson -bare server
 {
   "hosts": [
     "logs.ch2.amazee.io",
-    "logs.logs-concentrator.svc.cluster.local"
+    "lagoon-logs-concentrator.lagoon-logs-concentrator.svc.cluster.local"
   ],
   "CN": "logs.ch2.amazee.io",
   "key": {
@@ -40,7 +40,7 @@ cat <<EOF | kubectl apply -f -
 apiVersion: certificates.k8s.io/v1beta1
 kind: CertificateSigningRequest
 metadata:
-  name: logs.logs-concentrator
+  name: logs
 spec:
   request: $(cat server.csr | base64 | tr -d '\n')
   usages:
@@ -52,12 +52,12 @@ EOF
 
 Approve the CSR:
 ```
-$ kubectl certificate approve ...
+$ kubectl certificate approve logs
 ```
 
 Get the signed certificate via:
 ```
-$ kubectl get csr logs.logs-concentrator -o json | \
+$ kubectl get csr logs -o json | \
     jq -r '.status.certificate | @base64d' > server.crt
 ```
 

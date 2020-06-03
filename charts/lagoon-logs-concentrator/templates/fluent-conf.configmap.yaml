@@ -17,6 +17,7 @@ data:
       <security>
         self_hostname logs-concentrator
         user_auth true
+        shared_key "#{ENV['FORWARD_SHARED_KEY']}"
         @include user.d/*.conf
       </security>
       <transport tls>

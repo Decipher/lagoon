@@ -70,15 +70,37 @@ tolerations: []
 
 affinity: {}
 
-# Elasticsearch output config. Defaults to 9300, http.
-#elasticsearchHostPort: "443"
-#elasticsearchScheme: https
+# The values below are optional.
 
-# The values below must be supplied during installation as they have no sane
-# defaults. Certificate should be provided in PEM format.
-#elasticsearchHost: ""
-#elasticsearchAdminPassword: ""
+#elasticsearchHostPort: "443" # default 9200
+#elasticsearchScheme: https   # default http
+#service:
+#  type: LoadBalancer         # default ClusterIP. Set to LoadBalancer to
+#                             # expose the logs-concentrator service
+#                             # publicly.
+
+# The values below must be supplied during installation.
+# Certificates should be provided in PEM format.
+# Sample data shown below.
+
+#elasticsearchHost: "logs-db-service.elasticsearch.svc.cluster.local"
+#elasticsearchAdminPassword: "securepass"
 #tls:
-#  caCert: ""
-#  serverCertChain: ""
-#  serverKey: ""
+#  caCert: |
+#    -----BEGIN CERTIFICATE-----
+#    ...
+#    -----END CERTIFICATE-----
+#  serverCert: |
+#    -----BEGIN CERTIFICATE-----
+#    ...
+#    -----END CERTIFICATE-----
+#  serverKey: |
+#    -----BEGIN EC PRIVATE KEY-----
+#    ...
+#    -----END EC PRIVATE KEY-----
+#forwardSharedKey: "securekey"
+#users:
+#- username: "example1"
+#  password: "securepass"
+#- username: "example2"
+#  password: "securepass"

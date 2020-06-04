@@ -14,11 +14,13 @@ data:
       # this source is only to facilitate readiness/liveness probes
       @type forward
       @id   probe
-      port 24225
+      port  24225
+      tag   probe
     </source>
     <source>
-      @type forward
-      @id   in_forward
+      @type          forward
+      @id            in_forward
+      add_tag_prefix in_forward
       <security>
         self_hostname logs-concentrator
         user_auth true
@@ -33,7 +35,7 @@ data:
       </transport>
     </source>
     # send to elasticsearch
-    <match **>
+    <match in_forward.*>
       @type elasticsearch
       @id out_elasticsearch
       # ingestion

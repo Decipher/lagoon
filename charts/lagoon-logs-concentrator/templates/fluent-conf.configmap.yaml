@@ -37,7 +37,7 @@ data:
       time_key time
       # endpoint
       host "#{ENV['ELASTICSEARCH_HOST']}"
-      port "#{ENV.fetch('ELASTICSEARCH_HOST_PORT','9300')}"
+      port "#{ENV.fetch('ELASTICSEARCH_HOST_PORT','9200')}"
       scheme "#{ENV.fetch('ELASTICSEARCH_SCHEME','http')}"
       ssl_min_version TLSv1_2
       ssl_max_version TLSv1_3

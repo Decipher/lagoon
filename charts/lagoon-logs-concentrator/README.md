@@ -3,6 +3,10 @@
 This service collects logs from logs-dispatchers (both local and remote) using
 fluentd's forward protocol, and sends them to Elasticsearch.
 
+## Configuration
+
+See the commented sample configuration at the end of `values.yaml`.
+
 ## TLS
 
 Clients connect to this service via TLS. Mutual TLS authentication is performed by the client and server.

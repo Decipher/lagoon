@@ -35,15 +35,18 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-          - name: forward
-            containerPort: 24224
-            protocol: TCP
+        - name: forward
+          containerPort: 24224
+          protocol: TCP
+        - name: probe
+          containerPort: 24225
+          protocol: TCP
         livenessProbe:
           tcpSocket:
-            port: forward
+            port: probe
         readinessProbe:
           tcpSocket:
-            port: forward
+            port: probe
         envFrom:
         - secretRef:
             name: {{ include "lagoon-logs-concentrator.fullname" . }}-env

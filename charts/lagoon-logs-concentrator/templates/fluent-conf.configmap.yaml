@@ -11,7 +11,12 @@ data:
       workers 4
     </system>
     <source>
-      # fluentd parameters
+      # this source is only to facilitate readiness/liveness probes
+      @type forward
+      @id   probe
+      port 24225
+    </source>
+    <source>
       @type forward
       @id   in_forward
       <security>

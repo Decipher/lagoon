@@ -28,8 +28,21 @@ spec:
       serviceAccountName: {{ include "lagoon-logs-concentrator.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+      - name: chown-buffer
+        image: busybox:musl
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        command:
+        - chown
+        - '100:0'
+        - /fluentd/buffer
+        volumeMounts:
+        - mountPath: /fluentd/buffer/
+          name: {{ include "lagoon-logs-concentrator.fullname" . }}-buffer
       containers:
-      - name: {{ .Chart.Name }}
+      - name: fluentd
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

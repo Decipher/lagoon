@@ -51,15 +51,12 @@ spec:
         - name: forward
           containerPort: 24224
           protocol: TCP
-        - name: probe
-          containerPort: 24225
-          protocol: TCP
         livenessProbe:
           tcpSocket:
-            port: probe
+            port: forward
         readinessProbe:
           tcpSocket:
-            port: probe
+            port: forward
         envFrom:
         - secretRef:
             name: {{ include "lagoon-logs-concentrator.fullname" . }}-env

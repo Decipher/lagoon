@@ -11,16 +11,11 @@ data:
       workers 4
     </system>
     <source>
-      # this source is only to facilitate readiness/liveness probes
-      @type forward
-      @id   probe
-      port  24225
-      tag   probe
-    </source>
-    <source>
       @type          forward
       @id            in_forward
       add_tag_prefix in_forward
+      # avoid verbose OpenSSL warnings in fluentd logs due to liveness probes
+      # @log_level      error
       <security>
         self_hostname logs-concentrator
         user_auth true

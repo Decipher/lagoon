@@ -160,8 +160,9 @@ data:
         tls_client_private_key_path /fluentd/tls/client.key
         # endpoint
         <server>
-          host "#{ENV['LOGS_FORWARD_HOST']}"
           port "#{ENV['LOGS_FORWARD_HOST_PORT']}"
+          host "#{ENV['LOGS_FORWARD_HOST']}"
+          name "#{ENV['LOGS_FORWARD_HOSTNAME']}"
           username "#{ENV['LOGS_FORWARD_USERNAME']}"
           password "#{ENV['LOGS_FORWARD_PASSWORD']}"
         </server>

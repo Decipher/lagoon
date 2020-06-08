@@ -97,7 +97,7 @@ data:
       <filter **>
         @type record_modifier
         <record>
-          index_name container-logs-${record.dig('kubernetes','namespace_labels','lagoon_sh/project') || "#{record.dig('kubernetes','namespace_name') || 'unknown_project'}_#{ENV.fetch('CLUSTER_NAME','unknown_cluster')}"}-${Time.at(time).strftime("%Y.%m")}
+          index_name container-logs-${record.dig('kubernetes','namespace_labels','lagoon_sh/project') || "#{record.dig('kubernetes','namespace_name') || 'unknown_project'}_#{ENV['CLUSTER_NAME']}"}-${Time.at(time).strftime("%Y.%m")}
         </record>
       </filter>
       # route to forward block
@@ -136,7 +136,7 @@ data:
       <filter **>
         @type record_modifier
         <record>
-          index_name router-logs-${record.dig('kubernetes','namespace_labels','lagoon_sh/project') || "#{record.dig('kubernetes','namespace_name') || 'unknown_project'}_#{ENV.fetch('CLUSTER_NAME','unknown_cluster')}"}-${Time.at(time).strftime("%Y.%m")}
+          index_name router-logs-${record.dig('kubernetes','namespace_labels','lagoon_sh/project') || "#{record.dig('kubernetes','namespace_name') || 'unknown_project'}_#{ENV['CLUSTER_NAME']}"}-${Time.at(time).strftime("%Y.%m")}
         </record>
       </filter>
       # route to elasticsearch block
@@ -161,7 +161,6 @@ data:
         # endpoint
         <server>
           host "#{ENV['LOGS_FORWARD_HOST']}"
-          name "#{ENV['LOGS_FORWARD_HOSTNAME']}"
           port "#{ENV['LOGS_FORWARD_HOST_PORT']}"
           username "#{ENV['LOGS_FORWARD_USERNAME']}"
           password "#{ENV['LOGS_FORWARD_PASSWORD']}"
